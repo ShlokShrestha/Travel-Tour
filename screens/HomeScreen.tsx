@@ -1,11 +1,15 @@
-import { SafeAreaView, Text, View, Image } from "react-native";
+import { SafeAreaView, Text, View, TouchableOpacity } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import HeroImage from "../assets/hero.png";
-type Props = {};
+import * as Animatable from "react-native-animatable";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../App";
 
-const HomeScreen = (props: Props) => {
-  const navigation = useNavigation();
+type HomeProps = NativeStackNavigationProp<RootStackParamList, "Home">;
+
+const HomeScreen = () => {
+  const navigation = useNavigation<HomeProps>();
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -33,7 +37,26 @@ const HomeScreen = (props: Props) => {
       <View className="w-[400px] h-[400px] bg-[#00BCC9] rounded-full absolute bottom-36 -right-36"></View>
       <View className="w-[400px] h-[400px] bg-[#E99265] rounded-full absolute -bottom-28 -left-36"></View>
       <View className="flex-1 relative items-center justify-center">
-        <Image source={HeroImage} className="w-full h-full object-cover" />
+        <Animatable.Image
+          animation="fadeIn"
+          easing="ease-in"
+          source={HeroImage}
+          className="w-full h-full object-cover"
+        />
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Discover")}
+          className="absolute bottom-24 w-20 h-20 border-2 rounded-full border-[#00BCC9] justify-center items-center "
+        >
+          <Animatable.View
+            animation="pulse"
+            easing="ease-in-out"
+            iterationCount="infinite"
+            className="w-16 h-16 bg-[#00BCC9] rounded-full justify-center items-center"
+          >
+            <Text className="text-gray-50 font-semibold text-[26px]">Go</Text>
+          </Animatable.View>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
