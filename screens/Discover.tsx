@@ -73,8 +73,6 @@ const Discover = () => {
             <ItemCard />
             <ItemCard />
             <ItemCard />
-            <ItemCard />
-            <ItemCard />
           </View>
         </View>
       </ScrollView>
