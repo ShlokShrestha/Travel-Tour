@@ -7,6 +7,7 @@ export type RootStackParamList = {
   Home: undefined;
   Discover: undefined;
 };
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App(): JSX.Element {

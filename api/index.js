@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_KEY } from "@env";
 
-export const getPlacesData = async (bl_lat, bl_lng, tr_lat, tr_lng, type) => {
+export const getPlacesData = async (type) => {
   try {
     const {
       data: { data },
@@ -8,17 +9,16 @@ export const getPlacesData = async (bl_lat, bl_lng, tr_lat, tr_lng, type) => {
       `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
       {
         params: {
-          bl_latitude: bl_lat ? bl_lat : "25.15543993776612",
-          tr_latitude: tr_lat ? tr_lat : "25.41257834546226",
-          bl_longitude: bl_lng ? bl_lng : "51.39587210719369",
-          tr_longitude: tr_lng ? tr_lng : "51.62812119686502",
+          bl_latitude: "27.6515",
+          bl_longitude: " 85.2550",
+          tr_longitude: "27.7519",
+          tr_latitude: "85.3594",
           limit: "30",
           currency: "USD",
-          lunit: "km",
           lang: "en_US",
         },
         headers: {
-          "X-RapidAPI-Key": "YOUR_API_KEY",
+          "X-RapidAPI-Key": API_KEY,
           "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
         },
       }
