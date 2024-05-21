@@ -26,8 +26,8 @@ const Discover = () => {
       headerShown: false,
     });
   }, []);
-  const [type, setType] = useState("hotels");
-  1;
+
+  const [type, setType] = useState("restaurants");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,10 +37,10 @@ const Discover = () => {
       setData(data);
       setInterval(() => {
         setIsLoading(false);
-      }, 5000);
+      }, 3000);
     });
   }, [type]);
-  console.log(data, "type");
+  console.log(data, "data");
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="flex-row items-center justify-between px-8">
@@ -58,13 +58,6 @@ const Discover = () => {
       </View>
       <View className="flex-row items-center justify-between px-8 mt-8">
         <MenuContainer
-          key={"hotels"}
-          title="Hotels"
-          imageSrc={Hotels}
-          type={type}
-          setType={setType}
-        />
-        <MenuContainer
           key={"restaurants"}
           title="Restaurants"
           imageSrc={Restaurants}
@@ -75,6 +68,13 @@ const Discover = () => {
           key={"attractions"}
           title="Attractions"
           imageSrc={Attractions}
+          type={type}
+          setType={setType}
+        />
+        <MenuContainer
+          key={"hotels"}
+          title="Hotels"
+          imageSrc={Hotels}
           type={type}
           setType={setType}
         />
@@ -102,7 +102,6 @@ const Discover = () => {
                 numColumns={2}
                 contentContainerStyle={{
                   padding: 5,
-                 
                 }}
                 columnWrapperStyle={{ justifyContent: "space-between" }}
               />

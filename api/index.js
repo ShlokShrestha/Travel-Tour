@@ -2,19 +2,17 @@ import axios from "axios";
 import { API_KEY } from "@env";
 
 export const getPlacesData = async (type) => {
+  console.log(type, "type")
   try {
     const {
       data: { data },
     } = await axios.get(
-      `https://travel-advisor.p.rapidapi.com/${type}/list-in-boundary`,
+      `https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`,
       {
         params: {
-          bl_latitude: "27.6515",
-          bl_longitude: " 85.2550",
-          tr_longitude: "27.7519",
-          tr_latitude: "85.3594",
+          longitude: "85.30748",
+          latitude: "27.70462",
           limit: "30",
-          currency: "USD",
           lang: "en_US",
         },
         headers: {
